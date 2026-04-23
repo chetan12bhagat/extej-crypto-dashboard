@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  # DynamoDB Local
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: extej-dynamodb
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
+    volumes:
+      - dynamodb-data:/home/dynamodblocal/data
+
+  # DynamoDB Admin UI (optional)
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin:latest
+    container_name: extej-dynamodb-admin
+    environment:
+      DYNAMO_ENDPOINT: "http://dynamodb-local:8000"
+      AWS_REGION: "ap-south-1"
+      AWS_ACCESS_KEY_ID: "local"
+      AWS_SECRET_ACCESS_KEY: "local"
+    ports:
+      - "8080:8001"
+    depends_on:
+      - dynamodb-local
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: extej-backend
+    ports:
+      - "8001:8080"
+    environment:
+      AWS_REGION: "ap-south-1"
+      DYNAMO_TABLE_NAME: "extej-users-local"
+      ALLOWED_ORIGINS: "http://localhost:5173"
+      AWS_ACCESS_KEY_ID: "local"
+      AWS_SECRET_ACCESS_KEY: "local"
+      AWS_DEFAULT_REGION: "ap-south-1"
+    volumes:
+      - ./backend/app:/var/task/app
+    depends_on:
+      - dynamodb-local
+    command: "uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload"
+
+volumes:
+  dynamodb-data:
