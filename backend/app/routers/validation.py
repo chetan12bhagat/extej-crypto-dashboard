@@ -17,7 +17,13 @@ async def validate_single_address(
     current_user: dict = Depends(get_current_user),
 ):
     user_id = current_user["sub"]
-    result = validate_address(req.address, req.coin)
+    
+    # Clean address input
+    address = req.address.strip()
+    if address.lower().startswith('ox'):
+        address = '0x' + address[2:]
+    
+    result = validate_address(address, req.coin)
     
     # Store log
     log_id = str(uuid.uuid4())
@@ -33,7 +39,11 @@ async def validate_single_address(
         "coin": req.coin,
         "checkedAt": now,
     }
-    db.put_item(log_item)
+    try:
+        db.put_item(log_item)
+    except Exception as e:
+        print(f"Error saving validation log: {e}")
+        # Continue even if logging fails
     
     # Prepare result with message
     is_valid = result["isValid"]

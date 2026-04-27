@@ -58,4 +58,9 @@ def validate_address(address: str, coin: str) -> dict:
         "flags": flags,
         "network": coin,
         "type": "contract" if coin in ("ETH", "USDT") and is_valid else "wallet",
+        "details": {
+            "isBurn": "burn_address" in flags,
+            "isLowEntropy": "low_entropy" in flags,
+            "formatValid": is_valid
+        }
     }

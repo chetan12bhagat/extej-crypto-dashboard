@@ -32,7 +32,12 @@ export default function ValidationLogs() {
   const [validateOpen, setValidateOpen] = useState(false)
   const [address, setAddress] = useState('')
   const [coin, setCoin] = useState('ETH')
-  const [result, setResult] = useState<{ isValid: boolean; riskScore: number; message: string } | null>(null)
+  const [result, setResult] = useState<{ 
+    isValid: boolean; 
+    riskScore: number; 
+    message: string;
+    flags?: string[];
+  } | null>(null)
 
   const logs = logsQuery.data || []
 
@@ -183,7 +188,16 @@ export default function ValidationLogs() {
                 <span style={{ fontSize: '18px' }}>{result.isValid ? '✓' : '✕'}</span>
                 <span style={{ fontWeight: 700, color: result.isValid ? 'var(--green)' : 'var(--red)' }}>{result.message}</span>
               </div>
-              <div style={{ fontSize: '12px', color: 'var(--muted2)' }}>Risk Score: <strong style={{ color: result.riskScore > 50 ? 'var(--red)' : 'var(--green)' }}>{result.riskScore}/100</strong></div>
+              <div style={{ fontSize: '12px', color: 'var(--muted2)', marginBottom: '8px' }}>
+                Risk Score: <strong style={{ color: result.riskScore > 50 ? 'var(--red)' : 'var(--green)' }}>{result.riskScore}/100</strong>
+              </div>
+              {result.flags && result.flags.length > 0 && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {result.flags.map(f => (
+                    <Badge key={f} variant="red" style={{ fontSize: '9px', padding: '2px 6px' }}>{f.replace('_', ' ')}</Badge>
+                  ))}
+                </div>
+              )}
             </motion.div>
           )}
 
