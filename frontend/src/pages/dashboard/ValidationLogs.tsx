@@ -42,12 +42,13 @@ export default function ValidationLogs() {
   const logs = logsQuery.data || []
 
   const handleValidate = async () => {
-    if (!address.trim()) {
-      add('Please enter a wallet address', 'error')
-      return
+    let cleanAddress = address.trim()
+    if (cleanAddress.toLowerCase().startsWith('ox')) {
+      cleanAddress = '0x' + cleanAddress.slice(2)
+      setAddress(cleanAddress)
     }
 
-    validateMutation.mutate({ address, coin }, {
+    validateMutation.mutate({ address: cleanAddress, coin }, {
       onSuccess: (res) => {
         setResult({
           ...res,
@@ -55,7 +56,10 @@ export default function ValidationLogs() {
         })
       },
       onError: (err: any) => {
-        const msg = err.response?.data?.detail || 'Validation failed. Please try again.'
+        let msg = err.response?.data?.detail || 'Validation failed. Please try again.'
+        if (err.code === 'ERR_NETWORK') {
+          msg = 'Network Error: Backend is unreachable. If you are on Vercel, please check your API environment variables.'
+        }
         add(msg, 'error')
       }
     })
