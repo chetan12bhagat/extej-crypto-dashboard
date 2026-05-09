@@ -115,11 +115,8 @@ export function Sidebar() {
                     width: '100%', padding: '9px 12px', marginBottom: '1px',
                     borderRadius: '10px',
                     fontSize: '13px', fontWeight: 500,
-                    color: active ? 'var(--primary)' : 'var(--muted2)',
-                    background: active
-                      ? 'rgba(255,255,255,0.06)'
-                      : 'transparent',
-                    boxShadow: active ? 'inset 0 0 0 1px rgba(255,255,255,0.08)' : 'none',
+                    color: active ? '#fff' : 'var(--muted2)',
+                    background: active ? '#000' : 'transparent',
                     border: 'none', cursor: 'pointer',
                     position: 'relative',
                     transition: 'all 0.18s',
