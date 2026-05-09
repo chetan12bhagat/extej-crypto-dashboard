@@ -83,7 +83,7 @@ export default function Signup() {
         Create account
       </h1>
       <p style={{ fontSize: '13.5px', color: 'var(--muted2)', marginBottom: '24px' }}>
-        Start your crypto journey with Extej
+        Start your crypto journey with Validex
       </p>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>

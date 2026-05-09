@@ -73,7 +73,7 @@ export default function Login() {
         Welcome back
       </h1>
       <p style={{ fontSize: '13.5px', color: 'var(--muted2)', marginBottom: '26px' }}>
-        Sign in to your Extej account
+        Sign in to your Validex account
       </p>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>

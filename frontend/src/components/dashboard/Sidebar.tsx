@@ -75,7 +75,7 @@ export function Sidebar() {
           </svg>
         </div>
         <span style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.5px' }}>
-          Ex<span style={{ color: 'var(--orange)' }}>tej</span>
+          Vali<span style={{ color: 'var(--orange)' }}>dex</span>
         </span>
         <div style={{
           marginLeft: 'auto',
