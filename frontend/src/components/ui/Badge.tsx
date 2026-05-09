@@ -1,6 +1,6 @@
 import React from 'react'
 
-type BadgeVariant = 'green' | 'red' | 'orange' | 'blue' | 'purple'
+type BadgeVariant = 'green' | 'red' | 'primary' | 'blue' | 'purple'
 
 interface BadgeProps {
   variant?: BadgeVariant

@@ -95,7 +95,7 @@ export default function Security() {
             <Badge variant="green" dot>MFA Active</Badge>
           )}
           {!mfaEnabled && (
-            <Button variant="orange" size="sm" onClick={handleToggle} loading={toggling}>Enable MFA</Button>
+            <Button variant="primary" size="sm" onClick={handleToggle} loading={toggling}>Enable MFA</Button>
           )}
         </div>
 
@@ -124,14 +124,14 @@ export default function Security() {
             <div key={i} style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '12px 14px', background: 'var(--bg3)', borderRadius: '10px',
-              border: s.current ? '1px solid rgba(249,115,22,0.2)' : '1px solid transparent',
+              border: s.current ? '1px solid rgba(255,255,255,0.2)' : '1px solid transparent',
             }}>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <div style={{ fontSize: '24px' }}>💻</div>
                 <div>
                   <div style={{ fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {s.device}
-                    {s.current && <Badge variant="orange">Current</Badge>}
+                    {s.current && <Badge variant="primary">Current</Badge>}
                   </div>
                   <div style={{ fontSize: '11.5px', color: 'var(--muted2)', marginTop: '2px' }}>
                     {s.ip} · {s.location} · {formatRelativeTime(s.lastActive)}

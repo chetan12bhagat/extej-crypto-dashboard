@@ -22,7 +22,7 @@ const icons = {
 const colors = {
   success: { bg: 'rgba(16,217,160,0.12)', border: 'rgba(16,217,160,0.3)', icon: '#10d9a0' },
   error:   { bg: 'rgba(244,63,94,0.12)',  border: 'rgba(244,63,94,0.3)',  icon: '#f43f5e' },
-  warning: { bg: 'rgba(249,115,22,0.12)', border: 'rgba(249,115,22,0.3)', icon: '#f97316' },
+  warning: { bg: 'rgba(255,255,255,0.12)', border: 'rgba(255,255,255,0.3)', icon: '#ffffff' },
   info:    { bg: 'rgba(96,165,250,0.12)', border: 'rgba(96,165,250,0.3)', icon: '#60a5fa' },
 }
 

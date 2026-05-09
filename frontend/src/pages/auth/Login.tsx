@@ -98,13 +98,13 @@ export default function Login() {
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '-6px' }}>
           <Link
             to="/forgot-password"
-            style={{ fontSize: '12px', color: 'var(--orange)', textDecoration: 'none', fontWeight: 600 }}
+            style={{ fontSize: '12px', color: 'var(--primary)', textDecoration: 'none', fontWeight: 600 }}
           >
             Forgot password?
           </Link>
         </div>
 
-        <Button type="submit" variant="orange" size="lg" loading={loading} style={{ width: '100%', marginTop: '4px' }}>
+        <Button type="submit" variant="primary" size="lg" loading={loading} style={{ width: '100%', marginTop: '4px' }}>
           Sign In
         </Button>
 
@@ -124,7 +124,7 @@ export default function Login() {
 
       <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted2)', marginTop: '22px' }}>
         Don't have an account?{' '}
-        <Link to="/signup" style={{ color: 'var(--orange)', fontWeight: 700, textDecoration: 'none' }}>
+        <Link to="/signup" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>
           Sign up
         </Link>
       </p>

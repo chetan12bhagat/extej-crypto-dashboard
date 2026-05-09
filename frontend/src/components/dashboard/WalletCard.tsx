@@ -10,7 +10,7 @@ interface WalletCardProps {
 }
 
 const coinColors: Record<string, string> = {
-  BTC: '#f97316', ETH: '#818cf8', USDT: '#10d9a0', BNB: '#facc15',
+  BTC: '#ffffff', ETH: '#818cf8', USDT: '#10d9a0', BNB: '#facc15',
   SOL: '#a78bfa', LTC: '#60a5fa', XRP: '#34d399', AVAX: '#f43f5e',
 }
 

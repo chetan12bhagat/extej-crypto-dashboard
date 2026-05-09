@@ -10,11 +10,11 @@ const config: Config = {
         bg3: '#1a1a1a',
         bg4: '#222222',
         bg5: '#2a2a2a',
-        orange: {
-          DEFAULT: '#f97316',
-          2: '#fb923c',
-          3: '#fed7aa',
-          glow: 'rgba(249,115,22,0.3)',
+        primary: {
+          DEFAULT: '#ffffff',
+          2: '#e5e5e5',
+          3: '#a3a3a3',
+          glow: 'rgba(255,255,255,0.1)',
         },
         green: '#4ade80',
         red: '#f43f5e',

@@ -44,14 +44,14 @@ export default function Wallet() {
             {wallets.length} wallets · {formatCurrency(totalValue)} total
           </p>
         </div>
-        <Button variant="orange" onClick={() => setAddOpen(true)}>+ Add Wallet</Button>
+        <Button variant="primary" onClick={() => setAddOpen(true)}>+ Add Wallet</Button>
       </div>
 
       {/* Summary bar */}
       <div className="card" style={{ padding: '20px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '20px' }}>
           {[
-            { label: 'Total Portfolio', val: formatCurrency(totalValue), color: 'var(--orange)' },
+            { label: 'Total Portfolio', val: formatCurrency(totalValue), color: 'var(--primary)' },
             { label: 'Best Performer', val: wallets.length > 0 ? `${wallets[0].coin} +2.4%` : '—', color: 'var(--green)' },
             { label: 'Wallets Count', val: `${wallets.length} Active`, color: 'var(--blue)' },
           ].map((s) => (
@@ -85,9 +85,9 @@ export default function Wallet() {
             flexDirection: 'column', gap: '10px', minHeight: '140px',
             border: '1px dashed var(--border2)', background: 'transparent',
           }}
-          whileHover={{ borderColor: 'rgba(249,115,22,0.4)', scale: 1.01 }}
+          whileHover={{ borderColor: 'rgba(255,255,255,0.4)', scale: 1.01 }}
         >
-          <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', color: 'var(--orange)' }}>
+          <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', color: 'var(--primary)' }}>
             +
           </div>
           <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--muted2)' }}>Add New Wallet</div>
@@ -113,7 +113,7 @@ export default function Wallet() {
           </div>
           <div style={{ display: 'flex', gap: '10px', marginTop: '4px' }}>
             <Button variant="ghost" style={{ flex: 1 }} onClick={() => setAddOpen(false)}>Cancel</Button>
-            <Button variant="orange" style={{ flex: 1 }} loading={addWalletMutation.isPending} onClick={handleAdd}>Add Wallet</Button>
+            <Button variant="primary" style={{ flex: 1 }} loading={addWalletMutation.isPending} onClick={handleAdd}>Add Wallet</Button>
           </div>
         </div>
       </Modal>

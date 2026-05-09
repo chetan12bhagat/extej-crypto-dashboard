@@ -26,7 +26,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           left: '-150px',
           width: '600px',
           height: '600px',
-          background: 'radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
@@ -74,10 +74,10 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           <div
             style={{
               width: '38px', height: '38px',
-              background: 'linear-gradient(135deg, #f97316, #c2410c)',
+              background: 'linear-gradient(135deg, #ffffff, #e5e5e5)',
               borderRadius: '11px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 0 20px rgba(249,115,22,0.4)',
+              boxShadow: '0 0 20px rgba(255,255,255,0.4)',
             }}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
@@ -85,7 +85,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
             </svg>
           </div>
           <span style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '-0.5px' }}>
-            Ex<span style={{ color: 'var(--orange)' }}>tej</span>
+            Ex<span style={{ color: 'var(--primary)' }}>tej</span>
           </span>
         </div>
 

@@ -85,7 +85,7 @@ export default function ConfirmEmail() {
       <div style={{ textAlign: 'center' }}>
         <div style={{
           width: '56px', height: '56px',
-          background: 'rgba(249,115,22,0.12)', border: '1px solid rgba(249,115,22,0.25)',
+          background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)',
           borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: '24px', margin: '0 auto 20px',
         }}>
@@ -114,7 +114,7 @@ export default function ConfirmEmail() {
               style={{
                 width: '48px', height: '54px',
                 background: 'var(--bg3)',
-                border: `1px solid ${d ? 'var(--orange)' : 'var(--border2)'}`,
+                border: `1px solid ${d ? 'var(--primary)' : 'var(--border2)'}`,
                 borderRadius: '10px',
                 textAlign: 'center', fontSize: '20px', fontWeight: 700,
                 color: 'var(--text)', outline: 'none', fontFamily: 'var(--mono)',
@@ -125,7 +125,7 @@ export default function ConfirmEmail() {
         </div>
 
         <Button
-          variant="orange" size="lg"
+          variant="primary" size="lg"
           loading={loading}
           onClick={handleVerify}
           style={{ width: '100%', marginBottom: '16px' }}
@@ -141,7 +141,7 @@ export default function ConfirmEmail() {
             <button
               onClick={handleResend}
               disabled={resendLoading}
-              style={{ background: 'none', border: 'none', color: 'var(--orange)', fontWeight: 700, cursor: 'pointer', fontSize: '13px', fontFamily: 'var(--font)' }}
+              style={{ background: 'none', border: 'none', color: 'var(--primary)', fontWeight: 700, cursor: 'pointer', fontSize: '13px', fontFamily: 'var(--font)' }}
             >
               {resendLoading ? 'Sending…' : 'Resend code'}
             </button>

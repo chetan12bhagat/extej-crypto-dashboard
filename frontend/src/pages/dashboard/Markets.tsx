@@ -5,7 +5,7 @@ import { LineChart, Line, ResponsiveContainer } from 'recharts'
 import { formatCurrency, formatPercent } from '@/utils/formatters'
 
 const coins = [
-  { symbol: 'BTC', name: 'Bitcoin', price: 76842, change: -0.8, vol: '$42.1B', mcap: '$1.51T', color: '#f97316' },
+  { symbol: 'BTC', name: 'Bitcoin', price: 76842, change: -0.8, vol: '$42.1B', mcap: '$1.51T', color: '#ffffff' },
   { symbol: 'ETH', name: 'Ethereum', price: 3214, change: 1.2, vol: '$18.3B', mcap: '$386B', color: '#818cf8' },
   { symbol: 'USDT', name: 'Tether', price: 1.0, change: 0.01, vol: '$98.2B', mcap: '$119B', color: '#10d9a0' },
   { symbol: 'BNB', name: 'BNB', price: 594, change: 2.1, vol: '$2.4B', mcap: '$86B', color: '#facc15' },
@@ -39,9 +39,9 @@ export default function Markets() {
             <button key={f} onClick={() => setFilter(f)}
               style={{
                 padding: '7px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 700,
-                background: filter === f ? 'rgba(249,115,22,0.15)' : 'var(--bg3)',
-                border: filter === f ? '1px solid rgba(249,115,22,0.3)' : '1px solid var(--border2)',
-                color: filter === f ? 'var(--orange)' : 'var(--muted2)',
+                background: filter === f ? 'rgba(255,255,255,0.15)' : 'var(--bg3)',
+                border: filter === f ? '1px solid rgba(255,255,255,0.3)' : '1px solid var(--border2)',
+                color: filter === f ? 'var(--primary)' : 'var(--muted2)',
                 cursor: 'pointer', fontFamily: 'var(--font)', textTransform: 'capitalize',
               }}>{f}</button>
           ))}
@@ -130,8 +130,8 @@ export default function Markets() {
                       onClick={(e) => { e.stopPropagation(); navigate(`/dashboard/trading?coin=${coin.symbol}`) }}
                       style={{
                         padding: '6px 14px', borderRadius: '7px',
-                        background: 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.08))',
-                        border: '1px solid rgba(249,115,22,0.25)', color: 'var(--orange)',
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.08))',
+                        border: '1px solid rgba(255,255,255,0.25)', color: 'var(--primary)',
                         fontSize: '11px', fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font)',
                       }}>Trade</button>
                   </td>

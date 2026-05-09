@@ -52,7 +52,7 @@ export default function Settings() {
             ) : (
               <div style={{
                 width: '60px', height: '60px', borderRadius: '50%',
-                background: 'linear-gradient(135deg, #f97316, #7c3aed)',
+                background: 'linear-gradient(135deg, #ffffff, #7c3aed)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '18px', fontWeight: 800,
               }}>
@@ -64,7 +64,7 @@ export default function Settings() {
               <div style={{ fontSize: '12px', color: 'var(--muted2)', marginTop: '2px' }}>{user?.email}</div>
               <div style={{ display: 'flex', gap: '6px', marginTop: '6px' }}>
                 <Badge variant={user?.provider === 'google' ? 'blue' : 'purple'}>{user?.provider === 'google' ? '🔵 Google' : '✉ Email'}</Badge>
-                <Badge variant="orange">{user?.role}</Badge>
+                <Badge variant="primary">{user?.role}</Badge>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function Settings() {
                     onClick={() => setNotifications((n) => ({ ...n, [key]: !val }))}
                     style={{
                       width: '42px', height: '24px', borderRadius: '12px',
-                      background: val ? 'var(--orange)' : 'var(--bg4)',
+                      background: val ? 'var(--primary)' : 'var(--bg4)',
                       border: 'none', cursor: 'pointer', position: 'relative', transition: 'background 0.25s',
                     }}
                   >
@@ -135,7 +135,7 @@ export default function Settings() {
             </div>
           </div>
 
-          <Button variant="orange" size="lg" loading={saving} onClick={handleSave} style={{ width: '100%' }}>
+          <Button variant="primary" size="lg" loading={saving} onClick={handleSave} style={{ width: '100%' }}>
             Save Changes
           </Button>
         </div>

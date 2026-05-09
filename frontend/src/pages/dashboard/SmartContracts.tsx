@@ -36,7 +36,7 @@ export default function SmartContracts() {
           {contracts.map((c, i) => (
             <motion.div key={c.address} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }}
               className="card" style={{ padding: '14px', cursor: 'pointer' }}
-              whileHover={{ borderColor: 'rgba(249,115,22,0.35)' }}>
+              whileHover={{ borderColor: 'rgba(255,255,255,0.35)' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <div style={{ fontSize: '13px', fontWeight: 700 }}>{c.name}</div>
                 <Badge variant="green">{c.status}</Badge>
@@ -73,12 +73,12 @@ export default function SmartContracts() {
               <div key={fn.name}
                 style={{ padding: '12px 14px', background: 'var(--bg3)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: '12.5px', color: 'var(--orange2)', marginBottom: '2px' }}>{fn.name}</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: '12.5px', color: 'var(--primary2)', marginBottom: '2px' }}>{fn.name}</div>
                   <div style={{ fontSize: '11px', color: 'var(--muted)' }}>Returns: {fn.returns}</div>
                 </div>
                 <button
                   onClick={() => setResult(`Result: ${Math.floor(Math.random() * 1000000)}`)}
-                  style={{ padding: '6px 14px', borderRadius: '7px', fontSize: '11px', fontWeight: 700, background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.2)', color: 'var(--orange)', cursor: 'pointer', fontFamily: 'var(--font)' }}>
+                  style={{ padding: '6px 14px', borderRadius: '7px', fontSize: '11px', fontWeight: 700, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: 'var(--primary)', cursor: 'pointer', fontFamily: 'var(--font)' }}>
                   Call
                 </button>
               </div>

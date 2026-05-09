@@ -59,8 +59,8 @@ export function BalanceChart({ totalValue, change }: BalanceChartProps) {
         <AreaChart data={chartData} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="balanceGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#f97316" stopOpacity={0.25} />
-              <stop offset="95%" stopColor="#f97316" stopOpacity={0} />
+              <stop offset="5%" stopColor="#ffffff" stopOpacity={0.25} />
+              <stop offset="95%" stopColor="#ffffff" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid stroke="rgba(255,255,255,0.04)" vertical={false} />
@@ -69,9 +69,9 @@ export function BalanceChart({ totalValue, change }: BalanceChartProps) {
           <Tooltip content={<CustomTooltip />} />
           <Area
             type="monotone" dataKey="value"
-            stroke="#f97316" strokeWidth={2}
+            stroke="#ffffff" strokeWidth={2}
             fill="url(#balanceGrad)"
-            dot={false} activeDot={{ r: 4, fill: '#f97316', stroke: 'var(--bg)', strokeWidth: 2 }}
+            dot={false} activeDot={{ r: 4, fill: '#ffffff', stroke: 'var(--bg)', strokeWidth: 2 }}
           />
         </AreaChart>
       </ResponsiveContainer>

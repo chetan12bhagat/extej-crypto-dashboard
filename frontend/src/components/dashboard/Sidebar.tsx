@@ -64,18 +64,18 @@ export function Sidebar() {
       }}>
         <div style={{
           width: '36px', height: '36px',
-          background: 'linear-gradient(135deg, #f97316, #c2410c)',
+          background: '#ffffff',
           borderRadius: '10px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 0 20px rgba(249,115,22,0.35)',
+          boxShadow: '0 4px 15px rgba(255,255,255,0.15)',
           flexShrink: 0,
         }}>
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
           </svg>
         </div>
         <span style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.5px' }}>
-          Vali<span style={{ color: 'var(--orange)' }}>dex</span>
+          Vali<span style={{ color: 'var(--primary)' }}>dex</span>
         </span>
         <div style={{
           marginLeft: 'auto',
@@ -109,11 +109,11 @@ export function Sidebar() {
                     width: '100%', padding: '9px 12px', marginBottom: '1px',
                     borderRadius: '10px',
                     fontSize: '13px', fontWeight: 500,
-                    color: active ? 'var(--orange)' : 'var(--muted2)',
+                    color: active ? 'var(--primary)' : 'var(--muted2)',
                     background: active
-                      ? 'linear-gradient(135deg,rgba(249,115,22,0.16),rgba(249,115,22,0.05))'
+                      ? 'rgba(255,255,255,0.06)'
                       : 'transparent',
-                    boxShadow: active ? 'inset 0 0 0 1px rgba(249,115,22,0.18)' : 'none',
+                    boxShadow: active ? 'inset 0 0 0 1px rgba(255,255,255,0.08)' : 'none',
                     border: 'none', cursor: 'pointer',
                     position: 'relative',
                     transition: 'all 0.18s',
@@ -127,9 +127,10 @@ export function Sidebar() {
                   <span style={{ flex: 1 }}>{item.label}</span>
                   {item.badge && (
                     <span style={{
-                      background: 'var(--orange)', color: '#fff',
+                      background: 'var(--bg4)', color: 'var(--text)',
                       fontSize: '9px', fontWeight: 800,
                       padding: '2px 6px', borderRadius: '20px',
+                      border: '1px solid var(--border2)',
                     }}>
                       {item.badge}
                     </span>

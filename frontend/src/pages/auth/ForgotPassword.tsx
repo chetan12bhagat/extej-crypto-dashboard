@@ -75,7 +75,7 @@ export default function ForgotPassword() {
           <form onSubmit={handleSendCode} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <Input label="Email address" type="email" placeholder="you@example.com"
               value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} />
-            <Button type="submit" variant="orange" size="lg" loading={loading} style={{ width: '100%' }}>
+            <Button type="submit" variant="primary" size="lg" loading={loading} style={{ width: '100%' }}>
               Send Reset Code
             </Button>
           </form>
@@ -96,7 +96,7 @@ export default function ForgotPassword() {
               value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} />
             <PasswordInput label="Confirm new password" placeholder="••••••••"
               value={confirm} onChange={(e) => setConfirm(e.target.value)} error={errors.confirm} />
-            <Button type="submit" variant="orange" size="lg" loading={loading} style={{ width: '100%' }}>
+            <Button type="submit" variant="primary" size="lg" loading={loading} style={{ width: '100%' }}>
               Reset Password
             </Button>
           </form>
@@ -105,7 +105,7 @@ export default function ForgotPassword() {
 
       <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted2)', marginTop: '22px' }}>
         Remember your password?{' '}
-        <Link to="/login" style={{ color: 'var(--orange)', fontWeight: 700, textDecoration: 'none' }}>Sign in</Link>
+        <Link to="/login" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>Sign in</Link>
       </p>
     </AuthLayout>
   )

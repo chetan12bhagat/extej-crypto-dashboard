@@ -56,7 +56,7 @@ export default function Transactions() {
         {[
           { label: 'Total TXs', val: total, color: 'var(--text)' },
           { label: 'Validated', val: '-', color: 'var(--green)' },
-          { label: 'Pending', val: '-', color: 'var(--orange)' },
+          { label: 'Pending', val: '-', color: 'var(--primary)' },
           { label: 'Failed', val: '-', color: 'var(--red)' },
         ].map((s) => (
           <div key={s.label} className="card" style={{ padding: '14px 16px' }}>
@@ -73,9 +73,9 @@ export default function Transactions() {
           <button key={s} onClick={() => setStatusFilter(s)}
             style={{
               padding: '5px 12px', borderRadius: '7px', fontSize: '12px', fontWeight: 700,
-              background: statusFilter === s ? 'rgba(249,115,22,0.15)' : 'transparent',
-              border: statusFilter === s ? '1px solid rgba(249,115,22,0.3)' : '1px solid transparent',
-              color: statusFilter === s ? 'var(--orange)' : 'var(--muted2)',
+              background: statusFilter === s ? 'rgba(255,255,255,0.15)' : 'transparent',
+              border: statusFilter === s ? '1px solid rgba(255,255,255,0.3)' : '1px solid transparent',
+              color: statusFilter === s ? 'var(--primary)' : 'var(--muted2)',
               cursor: 'pointer', fontFamily: 'var(--font)', textTransform: 'capitalize',
             }}>{s}</button>
         ))}
@@ -85,9 +85,9 @@ export default function Transactions() {
           <button key={c} onClick={() => setCoinFilter(c)}
             style={{
               padding: '5px 12px', borderRadius: '7px', fontSize: '12px', fontWeight: 700,
-              background: coinFilter === c ? 'rgba(249,115,22,0.15)' : 'transparent',
-              border: coinFilter === c ? '1px solid rgba(249,115,22,0.3)' : '1px solid transparent',
-              color: coinFilter === c ? 'var(--orange)' : 'var(--muted2)',
+              background: coinFilter === c ? 'rgba(255,255,255,0.15)' : 'transparent',
+              border: coinFilter === c ? '1px solid rgba(255,255,255,0.3)' : '1px solid transparent',
+              color: coinFilter === c ? 'var(--primary)' : 'var(--muted2)',
               cursor: 'pointer', fontFamily: 'var(--font)',
             }}>{c}</button>
         ))}
@@ -117,9 +117,9 @@ export default function Transactions() {
               <button key={p} onClick={() => setPage(p)}
                 style={{
                   width: '32px', height: '32px', borderRadius: '7px', fontSize: '12px', fontWeight: 700,
-                  background: page === p ? 'rgba(249,115,22,0.15)' : 'var(--bg3)',
-                  border: page === p ? '1px solid rgba(249,115,22,0.3)' : '1px solid var(--border)',
-                  color: page === p ? 'var(--orange)' : 'var(--muted2)',
+                  background: page === p ? 'rgba(255,255,255,0.15)' : 'var(--bg3)',
+                  border: page === p ? '1px solid rgba(255,255,255,0.3)' : '1px solid var(--border)',
+                  color: page === p ? 'var(--primary)' : 'var(--muted2)',
                   cursor: 'pointer', fontFamily: 'var(--font)',
                 }}>{p}</button>
             )

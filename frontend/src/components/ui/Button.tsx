@@ -1,17 +1,17 @@
 import React from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'orange' | 'outline' | 'ghost' | 'green' | 'red'
+  variant?: 'primary' | 'outline' | 'ghost' | 'green' | 'red'
   size?: 'sm' | 'md' | 'lg'
   loading?: boolean
   children: React.ReactNode
 }
 
 const variants: Record<string, React.CSSProperties> = {
-  orange: {
-    background: 'linear-gradient(135deg, #f97316, #c2410c)',
-    color: '#fff',
-    boxShadow: '0 3px 12px rgba(249,115,22,0.22)',
+  primary: {
+    background: '#ffffff',
+    color: '#000000',
+    boxShadow: '0 4px 14px rgba(255,255,255,0.12)',
     border: 'none',
   },
   outline: {
@@ -43,7 +43,7 @@ const sizes: Record<string, React.CSSProperties> = {
 }
 
 export function Button({
-  variant = 'orange',
+  variant = 'primary',
   size = 'md',
   loading = false,
   children,

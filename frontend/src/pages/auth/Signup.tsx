@@ -127,17 +127,17 @@ export default function Signup() {
         {/* Terms */}
         <label style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', cursor: 'pointer' }}>
           <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)}
-            style={{ marginTop: '2px', accentColor: 'var(--orange)' }} />
+            style={{ marginTop: '2px', accentColor: 'var(--primary)' }} />
           <span style={{ fontSize: '12.5px', color: 'var(--muted2)', lineHeight: 1.5 }}>
             I agree to the{' '}
-            <a href="#" style={{ color: 'var(--orange)', textDecoration: 'none' }}>Terms of Service</a>
+            <a href="#" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Terms of Service</a>
             {' '}and{' '}
-            <a href="#" style={{ color: 'var(--orange)', textDecoration: 'none' }}>Privacy Policy</a>
+            <a href="#" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Privacy Policy</a>
           </span>
         </label>
         {errors.terms && <span style={{ fontSize: '11.5px', color: 'var(--red)' }}>{errors.terms}</span>}
 
-        <Button type="submit" variant="orange" size="lg" loading={loading} style={{ width: '100%', marginTop: '4px' }}>
+        <Button type="submit" variant="primary" size="lg" loading={loading} style={{ width: '100%', marginTop: '4px' }}>
           Create Account
         </Button>
       </form>
@@ -152,7 +152,7 @@ export default function Signup() {
 
       <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted2)', marginTop: '22px' }}>
         Already have an account?{' '}
-        <Link to="/login" style={{ color: 'var(--orange)', fontWeight: 700, textDecoration: 'none' }}>Sign in</Link>
+        <Link to="/login" style={{ color: 'var(--primary)', fontWeight: 700, textDecoration: 'none' }}>Sign in</Link>
       </p>
     </AuthLayout>
   )

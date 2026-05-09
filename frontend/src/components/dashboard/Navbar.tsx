@@ -58,7 +58,7 @@ export function Navbar({ title }: NavbarProps) {
             color: 'var(--text)', fontFamily: 'var(--font)', outline: 'none',
             transition: 'border-color 0.2s',
           }}
-          onFocus={(e) => { e.target.style.borderColor = 'rgba(249,115,22,0.35)'; e.target.style.boxShadow = '0 0 0 3px rgba(249,115,22,0.07)' }}
+          onFocus={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.35)'; e.target.style.boxShadow = '0 0 0 3px rgba(255,255,255,0.07)' }}
           onBlur={(e) => { e.target.style.borderColor = 'var(--border2)'; e.target.style.boxShadow = 'none' }}
         />
       </div>
@@ -84,7 +84,7 @@ export function Navbar({ title }: NavbarProps) {
             borderRadius: '9px', display: 'flex', alignItems: 'center', justifyContent: 'center',
             cursor: 'pointer', transition: 'all 0.2s', color: 'var(--muted2)', position: 'relative',
           }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(249,115,22,0.3)'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--orange2)' }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.3)'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--primary2)' }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--border2)'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--muted2)' }}
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -92,7 +92,7 @@ export function Navbar({ title }: NavbarProps) {
           </svg>
           <span style={{
             position: 'absolute', top: '6px', right: '6px',
-            width: '7px', height: '7px', background: 'var(--orange)',
+            width: '7px', height: '7px', background: 'var(--primary)',
             borderRadius: '50%', border: '2px solid var(--bg2)',
           }} />
         </button>
@@ -106,7 +106,7 @@ export function Navbar({ title }: NavbarProps) {
             cursor: 'pointer', transition: 'border-color 0.2s', position: 'relative',
           }}
           onClick={() => setDropdownOpen((v) => !v)}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(249,115,22,0.25)' }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.25)' }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = 'var(--border2)' }}
         >
           {user?.picture ? (
@@ -117,7 +117,7 @@ export function Navbar({ title }: NavbarProps) {
           ) : (
             <div style={{
               width: '27px', height: '27px', borderRadius: '50%',
-              background: 'linear-gradient(135deg, var(--orange), #7c3aed)',
+              background: 'linear-gradient(135deg, var(--primary), #7c3aed)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: '10px', fontWeight: 800, flexShrink: 0,
             }}>

@@ -11,9 +11,9 @@ import type { ValidationLog } from '@/types/transaction'
 
 const mockLogs: ValidationLog[] = [] // Removed hardcoded mocks as we now fetch from API
 
-const resultBadge: Record<string, 'green' | 'orange' | 'red'> = {
+const resultBadge: Record<string, 'green' | 'primary' | 'red'> = {
   valid: 'green',
-  suspicious: 'orange',
+  suspicious: 'primary',
   invalid: 'red',
 }
 
@@ -73,7 +73,7 @@ export default function ValidationLogs() {
           <h1 style={{ fontSize: '21px', fontWeight: 800 }}>Validation Logs</h1>
           <p style={{ fontSize: '13px', color: 'var(--muted2)', marginTop: '3px' }}>Address & transaction audit trail</p>
         </div>
-        <Button variant="orange" onClick={() => { setValidateOpen(true); setResult(null) }}>+ Validate Address</Button>
+        <Button variant="primary" onClick={() => { setValidateOpen(true); setResult(null) }}>+ Validate Address</Button>
       </div>
 
       {/* Stats */}
@@ -81,7 +81,7 @@ export default function ValidationLogs() {
         {[
           { label: 'Total Checks', val: logs.length, color: 'var(--text)' },
           { label: 'Valid', val: logs.filter((l)=>l.result==='valid').length, color: 'var(--green)' },
-          { label: 'Suspicious', val: logs.filter((l)=>l.result==='suspicious').length, color: 'var(--orange)' },
+          { label: 'Suspicious', val: logs.filter((l)=>l.result==='suspicious').length, color: 'var(--primary)' },
           { label: 'Invalid', val: logs.filter((l)=>l.result==='invalid').length, color: 'var(--red)' },
         ].map((s) => (
           <div key={s.label} className="card" style={{ padding: '14px 16px' }}>
@@ -128,9 +128,9 @@ export default function ValidationLogs() {
                   <td style={{ padding: '14px 16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <div style={{ flex: 1, height: '4px', borderRadius: '2px', background: 'var(--bg4)', overflow: 'hidden' }}>
-                        <div style={{ height: '100%', width: `${log.riskScore}%`, background: log.riskScore > 60 ? 'var(--red)' : log.riskScore > 30 ? 'var(--orange)' : 'var(--green)', borderRadius: '2px' }} />
+                        <div style={{ height: '100%', width: `${log.riskScore}%`, background: log.riskScore > 60 ? 'var(--red)' : log.riskScore > 30 ? 'var(--primary)' : 'var(--green)', borderRadius: '2px' }} />
                       </div>
-                      <span style={{ fontSize: '11px', fontWeight: 700, color: log.riskScore > 60 ? 'var(--red)' : log.riskScore > 30 ? 'var(--orange)' : 'var(--green)' }}>{log.riskScore}</span>
+                      <span style={{ fontSize: '11px', fontWeight: 700, color: log.riskScore > 60 ? 'var(--red)' : log.riskScore > 30 ? 'var(--primary)' : 'var(--green)' }}>{log.riskScore}</span>
                     </div>
                   </td>
                   <td style={{ padding: '14px 16px', fontSize: '12px', color: 'var(--muted)' }}>{log.coin ?? '—'}</td>
@@ -150,9 +150,9 @@ export default function ValidationLogs() {
               <button key={c} onClick={() => setCoin(c)}
                 style={{
                   padding: '7px 16px', borderRadius: '8px', fontSize: '12px', fontWeight: 700,
-                  background: coin === c ? 'rgba(249,115,22,0.15)' : 'var(--bg3)',
-                  border: coin === c ? '1px solid rgba(249,115,22,0.3)' : '1px solid var(--border2)',
-                  color: coin === c ? 'var(--orange)' : 'var(--muted2)',
+                  background: coin === c ? 'rgba(255,255,255,0.15)' : 'var(--bg3)',
+                  border: coin === c ? '1px solid rgba(255,255,255,0.3)' : '1px solid var(--border2)',
+                  color: coin === c ? 'var(--primary)' : 'var(--muted2)',
                   cursor: 'pointer', fontFamily: 'var(--font)',
                 }}>{c}</button>
             ))}
@@ -173,7 +173,7 @@ export default function ValidationLogs() {
                   background: 'var(--bg4)', border: '1px solid var(--border)', color: 'var(--muted)',
                   cursor: 'pointer', transition: 'all 0.2s'
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--orange)'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--text)' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--primary)'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--text)' }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--border)'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--muted)' }}
               >
                 {ex.label}
@@ -207,7 +207,7 @@ export default function ValidationLogs() {
 
           <div style={{ display: 'flex', gap: '10px' }}>
             <Button variant="ghost" style={{ flex: 1 }} onClick={() => setValidateOpen(false)}>Cancel</Button>
-            <Button variant="orange" style={{ flex: 1 }} loading={validateMutation.isPending} onClick={handleValidate}>Validate</Button>
+            <Button variant="primary" style={{ flex: 1 }} loading={validateMutation.isPending} onClick={handleValidate}>Validate</Button>
           </div>
         </div>
       </Modal>

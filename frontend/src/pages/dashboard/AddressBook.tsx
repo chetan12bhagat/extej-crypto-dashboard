@@ -38,7 +38,7 @@ export default function AddressBook() {
           <h1 style={{ fontSize: '21px', fontWeight: 800 }}>Address Book</h1>
           <p style={{ fontSize: '13px', color: 'var(--muted2)', marginTop: '3px' }}>{addresses.length} saved addresses</p>
         </div>
-        <Button variant="orange" onClick={() => setAddOpen(true)}>+ Add Address</Button>
+        <Button variant="primary" onClick={() => setAddOpen(true)}>+ Add Address</Button>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '12px' }}>
@@ -54,7 +54,7 @@ export default function AddressBook() {
                   {addr.note && <div style={{ fontSize: '11.5px', color: 'var(--muted2)', marginTop: '2px' }}>{addr.note}</div>}
                 </div>
                 <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                  <Badge variant={addr.coin === 'BTC' ? 'orange' : addr.coin === 'ETH' ? 'purple' : 'green'}>{addr.coin}</Badge>
+                  <Badge variant={addr.coin === 'BTC' ? 'primary' : addr.coin === 'ETH' ? 'purple' : 'green'}>{addr.coin}</Badge>
                   <Badge variant={addr.isValid ? 'green' : 'red'}>{addr.isValid ? 'Valid' : 'Invalid'}</Badge>
                 </div>
               </div>
@@ -67,9 +67,9 @@ export default function AddressBook() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ fontSize: '11px', color: 'var(--muted2)' }}>Risk:</span>
                   <div style={{ width: '60px', height: '4px', borderRadius: '2px', background: 'var(--bg4)', overflow: 'hidden' }}>
-                    <div style={{ height: '100%', width: `${addr.riskScore}%`, background: addr.riskScore > 60 ? 'var(--red)' : addr.riskScore > 30 ? 'var(--orange)' : 'var(--green)', borderRadius: '2px' }} />
+                    <div style={{ height: '100%', width: `${addr.riskScore}%`, background: addr.riskScore > 60 ? 'var(--red)' : addr.riskScore > 30 ? 'var(--primary)' : 'var(--green)', borderRadius: '2px' }} />
                   </div>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: addr.riskScore > 60 ? 'var(--red)' : addr.riskScore > 30 ? 'var(--orange)' : 'var(--green)' }}>{addr.riskScore}</span>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: addr.riskScore > 60 ? 'var(--red)' : addr.riskScore > 30 ? 'var(--primary)' : 'var(--green)' }}>{addr.riskScore}</span>
                 </div>
                 <div style={{ display: 'flex', gap: '6px' }}>
                   <button
@@ -102,7 +102,7 @@ export default function AddressBook() {
           <Input label="Note (optional)" placeholder="e.g. Hardware wallet" value={form.note} onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))} />
           <div style={{ display: 'flex', gap: '10px' }}>
             <Button variant="ghost" style={{ flex: 1 }} onClick={() => setAddOpen(false)}>Cancel</Button>
-            <Button variant="orange" style={{ flex: 1 }} loading={addAddressMutation.isPending} onClick={handleAdd}>Save & Validate</Button>
+            <Button variant="primary" style={{ flex: 1 }} loading={addAddressMutation.isPending} onClick={handleAdd}>Save & Validate</Button>
           </div>
         </div>
       </Modal>

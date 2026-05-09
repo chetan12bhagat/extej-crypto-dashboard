@@ -9,9 +9,9 @@ interface TransactionTableProps {
   onValidate?: (tx: Transaction) => void
 }
 
-const statusBadge: Record<TxStatus, { v: 'green'|'orange'|'red'; label: string }> = {
+const statusBadge: Record<TxStatus, { v: 'green'|'primary'|'red'; label: string }> = {
   validated: { v: 'green', label: 'Validated' },
-  pending:   { v: 'orange', label: 'Pending' },
+  pending:   { v: 'primary', label: 'Pending' },
   failed:    { v: 'red', label: 'Failed' },
 }
 
@@ -60,7 +60,7 @@ export function TransactionTable({ transactions, loading, onValidate }: Transact
               onMouseEnter={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'var(--bg3)' }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLTableRowElement).style.background = 'transparent' }}
             >
-              <td style={{ padding: '12px 10px', fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--orange2)' }}>
+              <td style={{ padding: '12px 10px', fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--primary2)' }}>
                 {truncateAddress(tx.hash, 6, 4)}
               </td>
               <td style={{ padding: '12px 10px', fontFamily: 'var(--mono)', fontSize: '12px', color: 'var(--muted2)' }}>
@@ -86,9 +86,9 @@ export function TransactionTable({ transactions, loading, onValidate }: Transact
                   <button
                     onClick={() => onValidate(tx)}
                     style={{
-                      background: 'rgba(249,115,22,0.1)', border: '1px solid rgba(249,115,22,0.2)',
+                      background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
                       borderRadius: '6px', padding: '4px 10px',
-                      fontSize: '10.5px', color: 'var(--orange)', cursor: 'pointer', fontFamily: 'var(--font)',
+                      fontSize: '10.5px', color: 'var(--primary)', cursor: 'pointer', fontFamily: 'var(--font)',
                     }}
                   >
                     Validate

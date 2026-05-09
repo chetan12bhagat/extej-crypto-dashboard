@@ -24,8 +24,8 @@ const mockTxs = [
 ]
 
 const statCards = [
-  { label: 'Total Portfolio', value: '$1,180,577', change: '+2.4%', up: true, icon: '◈', color: 'var(--orange)' },
-  { label: 'BTC Balance', value: '9.82 BTC', change: '-0.8%', up: false, icon: '₿', color: '#f97316' },
+  { label: 'Total Portfolio', value: '$1,180,577', change: '+2.4%', up: true, icon: '◈', color: 'var(--primary)' },
+  { label: 'BTC Balance', value: '9.82 BTC', change: '-0.8%', up: false, icon: '₿', color: '#ffffff' },
   { label: 'ETH Balance', value: '107.45 ETH', change: '+1.2%', up: true, icon: 'Ξ', color: '#818cf8' },
   { label: 'Security Score', value: '98/100', change: 'Excellent', up: true, icon: '🛡', color: 'var(--green)' },
 ]
@@ -45,8 +45,8 @@ export default function Dashboard() {
   const transactions = txQuery.data?.items || []
 
   const statCards = [
-    { label: 'Total Portfolio', value: formatCurrency(summary?.totalValueUSD || user?.portfolioValue || 0), change: `+${summary?.changePercent24h || 0}%`, up: (summary?.changePercent24h || 0) >= 0, icon: '◈', color: 'var(--orange)' },
-    { label: 'BTC Balance', value: `${wallets.find(w => w.coin === 'BTC')?.balance || 0} BTC`, change: '-0.8%', up: false, icon: '₿', color: '#f97316' },
+    { label: 'Total Portfolio', value: formatCurrency(summary?.totalValueUSD || user?.portfolioValue || 0), change: `+${summary?.changePercent24h || 0}%`, up: (summary?.changePercent24h || 0) >= 0, icon: '◈', color: 'var(--primary)' },
+    { label: 'BTC Balance', value: `${wallets.find(w => w.coin === 'BTC')?.balance || 0} BTC`, change: '-0.8%', up: false, icon: '₿', color: '#ffffff' },
     { label: 'ETH Balance', value: `${wallets.find(w => w.coin === 'ETH')?.balance || 0} ETH`, change: '+1.2%', up: true, icon: 'Ξ', color: '#818cf8' },
     { label: 'Security Score', value: `${user?.securityScore || 85}/100`, change: 'Excellent', up: true, icon: '🛡', color: 'var(--green)' },
   ]
@@ -67,11 +67,11 @@ export default function Dashboard() {
           onClick={() => navigate('/dashboard/wallet')}
           style={{
             display: 'flex', alignItems: 'center', gap: '8px',
-            background: 'linear-gradient(135deg, #f97316, #c2410c)',
+            background: 'linear-gradient(135deg, #ffffff, #e5e5e5)',
             padding: '10px 18px', borderRadius: '10px',
             fontSize: '13px', fontWeight: 700, color: '#fff',
             border: 'none', cursor: 'pointer',
-            boxShadow: '0 4px 16px rgba(249,115,22,0.28)',
+            boxShadow: '0 4px 16px rgba(255,255,255,0.28)',
           }}>
           + Add Wallet
         </button>
@@ -108,9 +108,9 @@ export default function Dashboard() {
                   onClick={() => setTimeframe(t)}
                   style={{
                     padding: '4px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: 700,
-                    background: timeframe === t ? 'rgba(249,115,22,0.15)' : 'transparent',
-                    border: timeframe === t ? '1px solid rgba(249,115,22,0.3)' : '1px solid transparent',
-                    color: timeframe === t ? 'var(--orange)' : 'var(--muted)',
+                    background: timeframe === t ? 'rgba(255,255,255,0.15)' : 'transparent',
+                    border: timeframe === t ? '1px solid rgba(255,255,255,0.3)' : '1px solid transparent',
+                    color: timeframe === t ? 'var(--primary)' : 'var(--muted)',
                     cursor: 'pointer', fontFamily: 'var(--font)',
                   }}>{t}</button>
               ))}
@@ -126,7 +126,7 @@ export default function Dashboard() {
             <div key={a.coin} style={{ marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: a.coin === 'BTC' ? '#f97316' : a.coin === 'ETH' ? '#818cf8' : '#10d9a0', display: 'block' }} />
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: a.coin === 'BTC' ? '#ffffff' : a.coin === 'ETH' ? '#818cf8' : '#10d9a0', display: 'block' }} />
                   <span style={{ fontSize: '13px', fontWeight: 600 }}>{a.coin}</span>
                 </div>
                 <div style={{ display: 'flex', gap: '12px' }}>
@@ -138,7 +138,7 @@ export default function Dashboard() {
                 <motion.div
                   initial={{ width: 0 }} animate={{ width: `${a.percent}%` }}
                   transition={{ delay: 0.3 + i * 0.1, duration: 0.7, ease: 'easeOut' }}
-                  style={{ height: '100%', borderRadius: '3px', background: `linear-gradient(90deg, var(--orange), var(--orange2))` }}
+                  style={{ height: '100%', borderRadius: '3px', background: `linear-gradient(90deg, var(--primary), var(--primary2))` }}
                 />
               </div>
             </div>
@@ -167,7 +167,7 @@ export default function Dashboard() {
             My Wallets
             <span
               onClick={() => navigate('/dashboard/wallet')}
-              style={{ fontSize: '11px', color: 'var(--orange)', cursor: 'pointer', fontWeight: 600 }}>View all →</span>
+              style={{ fontSize: '11px', color: 'var(--primary)', cursor: 'pointer', fontWeight: 600 }}>View all →</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {walletsQuery.isLoading ? (
@@ -184,7 +184,7 @@ export default function Dashboard() {
             <div style={{ fontSize: '13px', fontWeight: 700 }}>Recent Transactions</div>
             <span
               onClick={() => navigate('/dashboard/transactions')}
-              style={{ fontSize: '11px', color: 'var(--orange)', cursor: 'pointer', fontWeight: 600 }}>View all →</span>
+              style={{ fontSize: '11px', color: 'var(--primary)', cursor: 'pointer', fontWeight: 600 }}>View all →</span>
           </div>
           {txQuery.isLoading ? (
             <div className="skeleton" style={{ height: '200px', width: '100%' }} />

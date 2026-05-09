@@ -65,11 +65,11 @@ export default function Trading() {
                 <button key={c} onClick={() => setCoin(c)}
                   style={{
                     padding: '8px 16px', borderRadius: '9px', fontSize: '13px', fontWeight: 700,
-                    background: coin === c ? 'linear-gradient(135deg,#f97316,#c2410c)' : 'var(--bg3)',
+                    background: coin === c ? 'linear-gradient(135deg,#ffffff,#e5e5e5)' : 'var(--bg3)',
                     border: coin === c ? 'none' : '1px solid var(--border2)',
                     color: coin === c ? '#fff' : 'var(--muted2)',
                     cursor: 'pointer', fontFamily: 'var(--font)',
-                    boxShadow: coin === c ? '0 4px 14px rgba(249,115,22,0.3)' : 'none',
+                    boxShadow: coin === c ? '0 4px 14px rgba(255,255,255,0.3)' : 'none',
                   }}>{c}</button>
               ))}
             </div>
