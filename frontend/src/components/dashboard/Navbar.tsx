@@ -53,15 +53,11 @@ export function Navbar({ title }: NavbarProps) {
           value={search} onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleSearch}
           placeholder="Search transactions, addresses…"
+          className="input-field"
           style={{
-            width: '100%', background: 'var(--bg3)',
-            border: '1px solid var(--border2)', borderRadius: '9px',
-            padding: '8px 14px 8px 32px', fontSize: '12.5px',
-            color: 'var(--text)', fontFamily: 'var(--font)', outline: 'none',
-            transition: 'border-color 0.2s',
+            paddingLeft: '36px',
+            fontSize: '12.5px',
           }}
-          onFocus={(e) => { e.target.style.borderColor = 'rgba(255,255,255,0.35)'; e.target.style.boxShadow = '0 0 0 3px rgba(255,255,255,0.07)' }}
-          onBlur={(e) => { e.target.style.borderColor = 'var(--border2)'; e.target.style.boxShadow = 'none' }}
         />
       </div>
 

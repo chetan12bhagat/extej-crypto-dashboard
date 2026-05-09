@@ -76,7 +76,7 @@ export function Sidebar() {
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
           </svg>
         </div>
-        <span style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.5px' }}>
+        <span style={{ fontSize: '19px', fontWeight: 800, letterSpacing: '-0.5px', color: 'var(--text)' }}>
           Vali<span style={{ color: 'var(--primary)' }}>dex</span>
         </span>
         <div style={{
