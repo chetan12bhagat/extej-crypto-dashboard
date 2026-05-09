@@ -11,7 +11,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import axios from 'axios'
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api'
+// Standalone Vercel serverless function endpoints
+const SEND_OTP_URL = '/api/send_otp'
+const VERIFY_OTP_URL = '/api/verify_otp'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -45,35 +47,22 @@ export default function Login() {
     setLoading(true)
 
     try {
-      const res = await axios.post(`${API_BASE}/auth/send-otp`, { email })
+      const res = await axios.post(SEND_OTP_URL, { email })
       
       if (res.data.code) {
-        // simulation mode (from backend)
-        add(`[DEMO MODE] OTP Code: ${res.data.code}`, 'info')
+        // SMTP not configured on server — show code in UI
+        add(`[DEMO] Your code: ${res.data.code}`, 'info')
+        sessionStorage.setItem('demo_otp', res.data.code)
       } else {
         add(`Verification code sent to ${email}`, 'success')
+        sessionStorage.removeItem('demo_otp')
       }
       
       setStep('otp')
       setCountdown(60)
     } catch (err: any) {
-      console.error('Backend connection failed:', err)
-      
-      // Automatic Fallback for Vercel/Demo purposes if backend is not running
-      const isConnectionError = !err.response || err.code === 'ERR_NETWORK' || err.code === 'ECONNABORTED'
-      
-      if (isConnectionError) {
-        const mockCode = Math.floor(100000 + Math.random() * 900000).toString()
-        add(`[SIMULATION MODE] Backend not found. Use code: ${mockCode}`, 'info', 10000)
-        
-        // Store mock code for verification step
-        sessionStorage.setItem('mock_otp', mockCode)
-        
-        setStep('otp')
-        setCountdown(60)
-      } else {
-        add(err.response?.data?.detail || 'Failed to send OTP. Please try again.', 'error')
-      }
+      const msg = err.response?.data?.detail || 'Failed to send OTP. Please try again later.'
+      add(msg, 'error')
     } finally {
       setLoading(false)
     }
@@ -89,25 +78,23 @@ export default function Login() {
     
     setLoading(true)
     try {
-      const mockCode = sessionStorage.getItem('mock_otp')
-      
-      if (mockCode) {
-        // Verify against simulation code
-        if (code === mockCode) {
-          sessionStorage.removeItem('mock_otp')
-          await loginMockUser()
-          add('Login successful (Simulation)!', 'success')
-          navigate('/dashboard')
-        } else {
+      const demoCode = sessionStorage.getItem('demo_otp')
+      if (demoCode) {
+        // Demo mode: verify locally
+        if (code !== demoCode) {
           add('Invalid verification code', 'error')
+          setLoading(false)
+          return
         }
+        sessionStorage.removeItem('demo_otp')
       } else {
-        // Real verification
-        await axios.post(`${API_BASE}/auth/verify-otp`, { email, code })
-        await loginMockUser() 
-        add('Login successful!', 'success')
-        navigate('/dashboard')
+        // Real mode: verify via serverless function
+        await axios.post(VERIFY_OTP_URL, { email, code })
       }
+      
+      await loginMockUser()
+      add('Login successful!', 'success')
+      navigate('/dashboard')
     } catch (err: any) {
       add(err.response?.data?.detail || 'Invalid or expired OTP code', 'error')
     } finally {
