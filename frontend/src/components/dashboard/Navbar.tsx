@@ -30,9 +30,7 @@ export function Navbar({ title }: NavbarProps) {
         display: 'flex', alignItems: 'center', gap: '12px',
         padding: '13px 26px',
         borderBottom: '1px solid var(--border)',
-        background: 'var(--glass-bg)',
-        backdropFilter: 'blur(20px) saturate(160%)',
-        WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+        background: 'var(--bg2)',
         flexShrink: 0, zIndex: 10, position: 'relative',
       }}
     >
@@ -138,10 +136,9 @@ export function Navbar({ title }: NavbarProps) {
             <div
               style={{
                 position: 'absolute', top: '100%', right: 0, marginTop: '8px',
-                background: 'var(--glass-bg)',
-                backdropFilter: 'blur(32px)',
+                background: 'var(--bg3)',
                 border: '1px solid var(--border2)',
-                borderRadius: '18px', padding: '8px', width: '220px',
+                borderRadius: '14px', padding: '8px', width: '220px',
                 boxShadow: '0 16px 40px rgba(0,0,0,0.4)', zIndex: 100,
               }}
               onClick={(e) => e.stopPropagation()}

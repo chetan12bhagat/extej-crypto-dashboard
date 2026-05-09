@@ -49,13 +49,17 @@ export function Button({
   children,
   disabled,
   style,
+  className = '',
   ...props
 }: ButtonProps) {
+  const isPrimary = variant === 'primary'
+  
   return (
     <button
       disabled={loading || disabled}
+      className={`${isPrimary ? 'glass-btn' : ''} ${className}`}
       style={{
-        ...variants[variant],
+        ...(!isPrimary ? variants[variant] : {}),
         ...sizes[size],
         display: 'inline-flex',
         alignItems: 'center',
