@@ -9,6 +9,10 @@ import { useAuth } from '@/hooks/useAuth'
 import { validateEmail } from '@/utils/validators'
 import { motion, AnimatePresence } from 'framer-motion'
 
+import axios from 'axios'
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001'
+
 export default function Login() {
   const navigate = useNavigate()
   const { loginWithGoogle, loginMockUser } = useAuth()
@@ -30,8 +34,8 @@ export default function Login() {
     }
   }, [countdown])
 
-  const handleSendOTP = async (ev: React.FormEvent) => {
-    ev.preventDefault()
+  const handleSendOTP = async (ev?: React.FormEvent) => {
+    if (ev) ev.preventDefault()
     const err = validateEmail(email)
     if (err) {
       setEmailError(err)
@@ -40,14 +44,20 @@ export default function Login() {
     setEmailError('')
     setLoading(true)
 
-    // Simulate sending OTP
     try {
-      await new Promise(r => setTimeout(r, 1500))
-      add(`Verification code sent to ${email}`, 'success')
+      const res = await axios.post(`${API_BASE}/auth/send-otp`, { email })
+      
+      if (res.data.code) {
+        // Simulation mode (SMTP not configured)
+        add(`[DEMO MODE] OTP Code: ${res.data.code}`, 'info')
+      } else {
+        add(`Verification code sent to ${email}`, 'success')
+      }
+      
       setStep('otp')
       setCountdown(60)
-    } catch (err) {
-      add('Failed to send OTP. Please try again.', 'error')
+    } catch (err: any) {
+      add(err.response?.data?.detail || 'Failed to send OTP. Is the backend running?', 'error')
     } finally {
       setLoading(false)
     }
@@ -63,13 +73,14 @@ export default function Login() {
     
     setLoading(true)
     try {
-      // Mock verification and login
-      await new Promise(r => setTimeout(r, 1200))
-      await loginMockUser() // Logs in the demo user for the project
+      await axios.post(`${API_BASE}/auth/verify-otp`, { email, code })
+      
+      // Success - log in the user
+      await loginMockUser() 
       add('Login successful!', 'success')
       navigate('/dashboard')
-    } catch (err) {
-      add('Invalid or expired OTP code', 'error')
+    } catch (err: any) {
+      add(err.response?.data?.detail || 'Invalid or expired OTP code', 'error')
     } finally {
       setLoading(false)
     }

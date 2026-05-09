@@ -5,8 +5,66 @@ from app.dependencies import get_current_user
 from app.models.user import SyncUserRequest, UserProfile
 from app.services import dynamo_service as db
 
+import random
+from pydantic import BaseModel
+from app.services.mail_service import send_otp_email
+
 router = APIRouter(prefix="/auth", tags=["auth"])
 
+class SendOTPRequest(BaseModel):
+    email: str
+
+class VerifyOTPRequest(BaseModel):
+    email: str
+    code: str
+
+@router.post("/send-otp")
+async def send_otp(req: SendOTPRequest):
+    """Generate and send an OTP to the user's email."""
+    code = f"{random.randint(100000, 999999)}"
+    expiry = int(datetime.now(timezone.utc).timestamp()) + 600 # 10 mins
+    
+    # Store in DynamoDB
+    pk = f"OTP#{req.email}"
+    sk = "CODE"
+    db.put_item({
+        "PK": pk,
+        "SK": sk,
+        "code": code,
+        "expiresAt": expiry
+    })
+    
+    success = send_otp_email(req.email, code)
+    if not success:
+        # For demo purposes, we return the code if mail fails to configure
+        return {"message": "OTP generated (Simulation Mode)", "code": code}
+        
+    return {"message": "OTP sent successfully"}
+
+@router.post("/verify-otp")
+async def verify_otp(req: VerifyOTPRequest):
+    """Verify the OTP code provided by the user."""
+    pk = f"OTP#{req.email}"
+    sk = "CODE"
+    item = db.get_item(pk, sk)
+    
+    if not item:
+        raise HTTPException(status_code=400, detail="No OTP found for this email")
+        
+    now = int(datetime.now(timezone.utc).timestamp())
+    if now > item["expiresAt"]:
+        db.delete_item(pk, sk)
+        raise HTTPException(status_code=400, detail="OTP expired")
+        
+    if item["code"] != req.code:
+        raise HTTPException(status_code=400, detail="Invalid OTP code")
+    
+    # Success - cleanup
+    db.delete_item(pk, sk)
+    
+    # In a real app, you'd issue a JWT here. 
+    # For this project, the frontend will use this success to trigger mock login.
+    return {"message": "Verification successful", "email": req.email}
 
 @router.post("/sync-user", response_model=UserProfile)
 async def sync_user(
