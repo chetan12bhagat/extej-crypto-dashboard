@@ -52,6 +52,9 @@ export default function AIChat() {
     setLoading(true)
 
     try {
+      // Artificial thinking delay (3 seconds) to make it feel more natural as requested
+      await new Promise(r => setTimeout(r, 3000))
+
       const response = await axios.post(
         'https://api.groq.com/openai/v1/chat/completions',
         {
@@ -164,11 +167,12 @@ export default function AIChat() {
                   onClick={() => handleSend()}
                   disabled={loading}
                   style={{ 
-                    width: '44px', height: '44px', borderRadius: '50%', background: '#000', 
+                    width: loading ? '100px' : '44px', height: '44px', borderRadius: loading ? '22px' : '50%', background: '#000', 
                     color: '#fff', border: 'none', cursor: 'pointer', display: 'flex', 
-                    alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s'
+                    alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s',
+                    fontSize: loading ? '12px' : '18px', fontWeight: 600
                   }}>
-                  {loading ? '...' : '→'}
+                  {loading ? 'Thinking...' : '→'}
                 </button>
               </div>
             </div>
@@ -232,8 +236,14 @@ export default function AIChat() {
               </motion.div>
             ))}
             {loading && (
-              <div style={{ alignSelf: 'flex-start', padding: '12px 20px', background: '#fff', borderRadius: '20px', border: '1px solid #eee' }}>
+              <div style={{ 
+                alignSelf: 'flex-start', padding: '12px 20px', background: '#fff', 
+                borderRadius: '20px', border: '1px solid #eee',
+                display: 'flex', alignItems: 'center', gap: '10px',
+                fontSize: '14px', color: '#666', fontWeight: 500
+              }}>
                 <span className="pulse-dot" />
+                Validex AI is thinking...
               </div>
             )}
             <div ref={chatEndRef} />
@@ -256,7 +266,9 @@ export default function AIChat() {
               className="input-field"
               style={{ flex: 1 }}
             />
-            <Button variant="primary" onClick={() => handleSend()} loading={loading}>Send</Button>
+            <Button variant="primary" onClick={() => handleSend()} loading={loading}>
+              {loading ? 'Thinking...' : 'Send'}
+            </Button>
           </div>
         </div>
       )}
