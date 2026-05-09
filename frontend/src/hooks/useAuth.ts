@@ -123,7 +123,7 @@ export function useAuth() {
   const loginMockUser = useCallback(async () => {
     const mockUser: User = {
       userId: 'mock-user-id',
-      email: 'demo@extej.io',
+      email: 'demo@validex.io',
       name: 'Austin Robertson',
       picture: undefined,
       provider: 'email',

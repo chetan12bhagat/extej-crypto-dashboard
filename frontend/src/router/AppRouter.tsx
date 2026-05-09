@@ -13,6 +13,7 @@ import SmartContracts from '@/pages/dashboard/SmartContracts'
 import AddressBook from '@/pages/dashboard/AddressBook'
 import Security from '@/pages/dashboard/Security'
 import Settings from '@/pages/dashboard/Settings'
+import AIChat from '@/pages/dashboard/AIChat'
 
 // Lazy auth pages
 const LoginPage = lazy(() => import('@/pages/auth/Login'))
@@ -37,6 +38,7 @@ const pageTitles: Record<string, string> = {
   '/dashboard/address-book': 'Address Book',
   '/dashboard/security': 'Security',
   '/dashboard/settings': 'Settings',
+  '/dashboard/ai-chat': 'AI Assistant',
 }
 
 function DashboardLayout() {
@@ -60,6 +62,7 @@ function DashboardLayout() {
             <Route path="address-book" element={<AddressBook />} />
             <Route path="security" element={<Security />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="ai-chat" element={<AIChat />} />
           </Routes>
         </div>
       </main>

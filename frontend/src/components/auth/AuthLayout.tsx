@@ -26,7 +26,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           left: '-150px',
           width: '600px',
           height: '600px',
-          background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
@@ -37,7 +37,7 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           right: '-100px',
           width: '400px',
           height: '400px',
-          background: 'radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 65%)',
           pointerEvents: 'none',
         }}
       />
@@ -74,18 +74,18 @@ export function AuthLayout({ children }: AuthLayoutProps) {
           <div
             style={{
               width: '38px', height: '38px',
-              background: 'linear-gradient(135deg, #ffffff, #e5e5e5)',
+              background: '#ffffff',
               borderRadius: '11px',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 0 20px rgba(255,255,255,0.4)',
+              boxShadow: '0 4px 15px rgba(255,255,255,0.2)',
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="black">
+              <path d="M13 2L3 14 12 14 11 22 21 10 12 10 13 2"/>
             </svg>
           </div>
           <span style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '-0.5px' }}>
-            Ex<span style={{ color: 'var(--primary)' }}>tej</span>
+            Vali<span style={{ color: 'var(--primary)' }}>dex</span>
           </span>
         </div>
 

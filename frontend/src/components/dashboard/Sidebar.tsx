@@ -34,6 +34,12 @@ const navItems = [
       { label: 'Settings', path: '/dashboard/settings', icon: '⚙', badge: null },
     ],
   },
+  {
+    group: 'Intelligence',
+    items: [
+      { label: 'AI Assistant', path: '/dashboard/ai-chat', icon: '✦', badge: 'NEW' },
+    ],
+  },
 ]
 
 export function Sidebar() {

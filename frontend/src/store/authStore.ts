@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthState>()(
         set({ isAuthenticated: false, user: null, accessToken: null, idToken: null, isLoading: false }),
     }),
     {
-      name: 'extej-auth',
+      name: 'validex-auth',
       partialize: (state) => ({
         isAuthenticated: state.isAuthenticated,
         user: state.user,

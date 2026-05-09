@@ -40,7 +40,7 @@ export function useTransactions(params?: {
     const url = URL.createObjectURL(new Blob([res.data]))
     const a = document.createElement('a')
     a.href = url
-    a.download = `extej-transactions-${Date.now()}.csv`
+    a.download = `validex-transactions-${Date.now()}.csv`
     a.click()
     URL.revokeObjectURL(url)
   }

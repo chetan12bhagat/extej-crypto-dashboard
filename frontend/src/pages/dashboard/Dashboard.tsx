@@ -8,6 +8,7 @@ import { BalanceChart } from '@/components/dashboard/BalanceChart'
 import { TransactionTable } from '@/components/dashboard/TransactionTable'
 import { WalletCard } from '@/components/dashboard/WalletCard'
 import { SkeletonCard } from '@/components/ui/Skeleton'
+import { Button } from '@/components/ui/Button'
 import { formatCurrency, formatRelativeTime } from '@/utils/formatters'
 
 // Mock wallets for demo
@@ -63,18 +64,9 @@ export default function Dashboard() {
             Last seen: {user?.lastLoginAt ? formatRelativeTime(user.lastLoginAt) : 'just now'} · {user?.role === 'admin' ? '👑 Admin' : '● Member'}
           </p>
         </div>
-        <button
-          onClick={() => navigate('/dashboard/wallet')}
-          style={{
-            display: 'flex', alignItems: 'center', gap: '8px',
-            background: 'linear-gradient(135deg, #ffffff, #e5e5e5)',
-            padding: '10px 18px', borderRadius: '10px',
-            fontSize: '13px', fontWeight: 700, color: '#fff',
-            border: 'none', cursor: 'pointer',
-            boxShadow: '0 4px 16px rgba(255,255,255,0.28)',
-          }}>
+        <Button variant="primary" onClick={() => navigate('/dashboard/wallet')}>
           + Add Wallet
-        </button>
+        </Button>
       </motion.div>
 
       {/* Stat Cards */}
