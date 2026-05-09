@@ -27,14 +27,17 @@ export function Modal({ open, onClose, title, children, width = 480 }: ModalProp
             transition={{ type: 'spring', damping: 28, stiffness: 400 }}
             onClick={(e) => e.stopPropagation()}
             style={{
-              background: 'var(--bg2)',
+              background: 'var(--glass-bg)',
+              backdropFilter: 'blur(36px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(36px) saturate(180%)',
               border: '1px solid var(--border2)',
-              borderRadius: '18px',
+              borderRadius: '24px',
               padding: '24px',
               width: `${width}px`,
               maxWidth: '95vw',
               maxHeight: '90vh',
               overflowY: 'auto',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
             }}
           >
             {title && (

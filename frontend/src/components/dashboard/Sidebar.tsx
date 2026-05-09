@@ -51,7 +51,9 @@ export function Sidebar() {
     <aside
       style={{
         width: '226px', minWidth: '226px',
-        background: 'var(--bg2)',
+        background: 'var(--glass-bg)',
+        backdropFilter: 'blur(30px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(30px) saturate(180%)',
         borderRight: '1px solid var(--border)',
         display: 'flex', flexDirection: 'column',
         overflow: 'hidden', zIndex: 20,
