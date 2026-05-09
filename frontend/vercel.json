@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/send_otp",
+      "destination": "/api/send_otp.py"
+    },
+    {
+      "source": "/api/verify_otp",
+      "destination": "/api/verify_otp.py"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
