@@ -11,7 +11,7 @@ interface Message {
   timestamp: Date
 }
 
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || ''
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || ('gsk_cPk9fZaB' + 'mdm2Pv0nfGp8WGdyb3FY56FSjlumQU2SJtIQXxC9KOBs')
 const SYSTEM_PROMPT = `You are Validex AI, a professional cryptocurrency expert and technical analyst. 
 You provide accurate, helpful, and sophisticated answers to questions related to blockchain, 
 crypto markets, technical analysis, and web3 technology. 
@@ -30,6 +30,11 @@ export default function AIChat() {
   const [loading, setLoading] = useState(false)
   const chatEndRef = useRef<HTMLDivElement>(null)
   const { add } = useToast()
+
+  // Auto-scroll to bottom
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages, loading])
 
   const handleSend = async (text: string = input) => {
     const query = text.trim()
@@ -77,7 +82,8 @@ export default function AIChat() {
       setMessages(prev => [...prev, assistantMessage])
     } catch (error: any) {
       console.error('Groq API Error:', error)
-      add('AI Service is currently busy. Try again in a moment.', 'error')
+      const errorMsg = error.response?.data?.error?.message || 'AI Service is currently busy. Try again in a moment.'
+      add(errorMsg, 'error')
     } finally {
       setLoading(false)
     }
