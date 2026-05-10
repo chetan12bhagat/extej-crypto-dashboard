@@ -145,8 +145,27 @@ export function Sidebar() {
         ))}
       </div>
 
-      {/* Sidebar footer */}
-      <div style={{ padding: '12px 10px', borderTop: '1px solid var(--border)' }}>
+      {/* Sidebar profile */}
+      <div style={{ padding: '16px 14px', borderTop: '1px solid var(--border)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+          <div style={{
+            width: '32px', height: '32px', borderRadius: '50%',
+            background: '#000', color: '#fff',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '11px', fontWeight: 800, flexShrink: 0
+          }}>
+            {(user?.name || user?.email || 'U')[0].toUpperCase()}
+          </div>
+          <div style={{ overflow: 'hidden' }}>
+            <div style={{ fontSize: '12.5px', fontWeight: 700, color: 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {user?.name || user?.email?.split('@')[0]}
+            </div>
+            <div style={{ fontSize: '10px', color: 'var(--muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {user?.email}
+            </div>
+          </div>
+        </div>
+        
         <button
           onClick={logout}
           style={{

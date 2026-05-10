@@ -120,11 +120,11 @@ export function useAuth() {
     }
   }, [navigate, setAuth, setProfile, setLoading, syncUserWithBackend])
 
-  const loginMockUser = useCallback(async () => {
+  const loginMockUser = useCallback(async (email?: string) => {
     const mockUser: User = {
       userId: 'mock-user-id',
-      email: 'demo@validex.io',
-      name: 'Austin Robertson',
+      email: email || 'demo@validex.io',
+      name: email ? email.split('@')[0] : 'Austin Robertson',
       picture: undefined,
       provider: 'email',
       role: 'admin',
@@ -132,7 +132,7 @@ export function useAuth() {
       lastLoginAt: new Date().toISOString(),
       securityScore: 98,
       mfaEnabled: false,
-      portfolioValue: 1180577,
+      portfolioValue: 1180577.00,
       currency: 'USD',
       theme: 'dark',
     }

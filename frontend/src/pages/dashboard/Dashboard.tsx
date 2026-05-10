@@ -58,7 +58,7 @@ export default function Dashboard() {
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <h1 style={{ fontSize: '22px', fontWeight: 800, letterSpacing: '-0.4px' }}>
-            {greeting}, {user?.name?.split(' ')[0] || 'Austin'} 👋
+            {greeting}, {user?.name || user?.email?.split('@')[0] || 'User'} 👋
           </h1>
           <p style={{ fontSize: '13px', color: 'var(--muted2)', marginTop: '4px' }}>
             Last seen: {user?.lastLoginAt ? formatRelativeTime(user.lastLoginAt) : 'just now'} · {user?.role === 'admin' ? '👑 Admin' : '● Member'}

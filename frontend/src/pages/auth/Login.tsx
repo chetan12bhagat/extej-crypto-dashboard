@@ -82,7 +82,7 @@ export default function Login() {
     try {
       await authApi.verifyOTP(email, code)
       
-      await loginMockUser()
+      await loginMockUser(email)
       add('Login successful!', 'success')
       navigate('/dashboard')
     } catch (err: any) {

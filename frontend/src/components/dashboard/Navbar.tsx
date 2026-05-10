@@ -124,7 +124,7 @@ export function Navbar({ title }: NavbarProps) {
             </div>
           )}
           <div>
-            <div style={{ fontSize: '12px', fontWeight: 600, lineHeight: 1.2 }}>{user?.name?.split(' ')[0] || 'User'}</div>
+            <div style={{ fontSize: '12px', fontWeight: 600, lineHeight: 1.2 }}>{user?.name || user?.email?.split('@')[0] || 'User'}</div>
             <div style={{ fontSize: '10px', color: 'var(--muted)', lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: '4px' }}>
               <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--green)', display: 'inline-block' }} />
               Online
