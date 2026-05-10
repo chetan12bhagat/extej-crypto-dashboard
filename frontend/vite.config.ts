@@ -3,9 +3,14 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
+  base: './',
   plugins: [react()],
   css: {
     postcss: './postcss.config.js',
+  },
+  build: {
+    outDir: 'dist',
+    target: 'esnext',
   },
   resolve: {
     alias: {
