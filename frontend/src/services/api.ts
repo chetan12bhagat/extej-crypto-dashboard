@@ -2,7 +2,8 @@ import axios from 'axios'
 import { fetchAuthSession } from 'aws-amplify/auth'
 import { useAuthStore } from '@/store/authStore'
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+// Use relative path '/api' which works via Vite proxy in dev and Vercel rewrites in prod
+const BASE_URL = '/api'
 
 export const api = axios.create({
   baseURL: BASE_URL,

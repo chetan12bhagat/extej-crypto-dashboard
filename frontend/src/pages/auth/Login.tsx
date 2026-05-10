@@ -55,7 +55,10 @@ export default function Login() {
       setStep('otp')
       setCountdown(60)
     } catch (err: any) {
-      const msg = err.response?.data?.detail || 'Failed to send OTP. Please check your connection.'
+      console.error('OTP Send Error:', err)
+      const msg = err.response?.data?.detail || 
+                  err.response?.data?.message || 
+                  (err.code === 'ECONNABORTED' ? 'Request timed out. Please try again.' : 'Failed to connect to authentication server.')
       add(msg, 'error')
     } finally {
       setLoading(false)

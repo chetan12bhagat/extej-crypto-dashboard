@@ -23,6 +23,10 @@
       "destination": "/api/verify_otp.py"
     },
     {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
       "source": "/(.*)",
       "destination": "/frontend/$1"
     }

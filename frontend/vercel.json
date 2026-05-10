@@ -2,11 +2,11 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api/send_otp",
+      "source": "/api/auth/send-otp",
       "destination": "/api/send_otp.py"
     },
     {
-      "source": "/api/verify_otp",
+      "source": "/api/auth/verify-otp",
       "destination": "/api/verify_otp.py"
     },
     {
