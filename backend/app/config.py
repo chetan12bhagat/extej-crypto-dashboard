@@ -10,12 +10,9 @@ class Settings(BaseSettings):
     cognito_jwks_url: str = ""
     allowed_origins: str = "http://localhost:5173,https://yourdomain.com"
     
-    # SMTP Settings
-    smtp_host: str = "smtp.gmail.com"
-    smtp_port: int = 587
-    smtp_user: str = ""
-    smtp_password: str = ""
-    smtp_from: str = "Validex <noreply@validex.io>"
+    # Email Settings
+    resend_api_key: str = ""
+    smtp_from: str = "Auth System <onboarding@resend.dev>"
 
 
     @property

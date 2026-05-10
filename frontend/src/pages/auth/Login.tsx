@@ -118,56 +118,67 @@ export default function Login() {
     <AuthLayout>
       <Toast toasts={toasts} remove={remove} />
 
-      <div style={{ minHeight: '340px' }}>
+      <div className="animate-fade-in" style={{ minHeight: '380px' }}>
         <AnimatePresence mode="wait">
           {step === 'email' ? (
             <motion.div
               key="email-step"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
-              <h1 style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '-0.8px', marginBottom: '8px' }}>
-                Sign in to Validex
+              <h1 className="gradient-text" style={{ fontSize: '32px', fontWeight: 900, letterSpacing: '-1.2px', marginBottom: '8px' }}>
+                Secure Access
               </h1>
-              <p style={{ fontSize: '14px', color: 'var(--muted2)', marginBottom: '30px' }}>
-                Enter your email to receive a verification code
+              <p style={{ fontSize: '14px', color: 'var(--muted2)', marginBottom: '32px', lineHeight: 1.6 }}>
+                Enter your email to receive a high-security verification code to your inbox.
               </p>
 
-              <form onSubmit={handleSendOTP} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <Input
-                  label="Email address"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  error={emailError}
-                  autoComplete="email"
-                />
+              <form onSubmit={handleSendOTP} style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
+                <div style={{ position: 'relative' }}>
+                  <Input
+                    label="Business Email"
+                    type="email"
+                    placeholder="name@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    error={emailError}
+                    autoComplete="email"
+                    style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '14px', padding: '14px 16px' }}
+                  />
+                </div>
 
-                <Button type="submit" variant="primary" size="lg" loading={loading} style={{ width: '100%', marginTop: '4px' }}>
-                  Send Verification Code
+                <Button 
+                  type="submit" 
+                  className="btn-gradient"
+                  size="lg" 
+                  loading={loading} 
+                  style={{ width: '100%', height: '54px', borderRadius: '16px', fontSize: '15px' }}
+                >
+                  Request Access Code
                 </Button>
               </form>
             </motion.div>
           ) : (
             <motion.div
               key="otp-step"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             >
-              <h1 style={{ fontSize: '28px', fontWeight: 800, letterSpacing: '-0.8px', marginBottom: '8px' }}>
-                Verify it's you
+              <h1 className="gradient-text" style={{ fontSize: '32px', fontWeight: 900, letterSpacing: '-1.2px', marginBottom: '8px' }}>
+                Check your Mail
               </h1>
-              <p style={{ fontSize: '14px', color: 'var(--muted2)', marginBottom: '30px' }}>
-                We've sent a 6-digit code to <strong>{email}</strong>. Please enter it below.
+              <p style={{ fontSize: '14px', color: 'var(--muted2)', marginBottom: '32px', lineHeight: 1.6 }}>
+                We've dispatched a 6-digit cryptographic code to <span style={{ color: '#fff', fontWeight: 600 }}>{email}</span>. 
               </p>
 
-              <form onSubmit={handleVerifyOTP} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+              <form onSubmit={handleVerifyOTP} style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
                   {otp.map((digit, i) => (
-                    <input
+                    <motion.input
                       key={i}
                       id={`otp-${i}`}
                       type="text"
@@ -175,50 +186,56 @@ export default function Login() {
                       value={digit}
                       onChange={(e) => handleOtpChange(i, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(i, e)}
+                      whileFocus={{ scale: 1.05, borderColor: '#fff' }}
                       style={{
-                        width: '46px',
-                        height: '56px',
+                        width: '50px',
+                        height: '62px',
                         textAlign: 'center',
-                        fontSize: '20px',
-                        fontWeight: 700,
-                        border: '1px solid var(--border2)',
-                        borderRadius: '12px',
-                        background: 'var(--bg2)',
-                        color: 'var(--text)',
+                        fontSize: '24px',
+                        fontWeight: 800,
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        borderRadius: '16px',
+                        background: 'rgba(255,255,255,0.03)',
+                        color: '#fff',
                         outline: 'none',
-                        transition: 'all 0.2s',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.03)'
+                        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
                       }}
-                      onFocus={(e) => e.target.style.borderColor = '#000'}
-                      onBlur={(e) => e.target.style.borderColor = 'var(--border2)'}
                     />
                   ))}
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <Button type="submit" variant="primary" size="lg" loading={loading} style={{ width: '100%' }}>
-                    Verify & Sign In
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <Button 
+                    type="submit" 
+                    className="btn-gradient"
+                    size="lg" 
+                    loading={loading} 
+                    style={{ width: '100%', height: '54px', borderRadius: '16px', fontSize: '15px' }}
+                  >
+                    Verify & Continue
                   </Button>
                   
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
                     <button
                       type="button"
                       onClick={() => setStep('email')}
-                      style={{ background: 'none', border: 'none', color: 'var(--muted2)', fontSize: '13px', cursor: 'pointer', marginRight: '15px' }}
+                      style={{ background: 'none', border: 'none', color: 'var(--muted2)', fontSize: '13px', cursor: 'pointer', fontWeight: 500 }}
                     >
-                      Change Email
+                      Use different email
                     </button>
+                    <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--border2)' }} />
                     <button
                       type="button"
                       disabled={countdown > 0}
                       onClick={handleSendOTP}
                       style={{ 
                         background: 'none', border: 'none', 
-                        color: countdown > 0 ? 'var(--muted)' : 'var(--primary)', 
+                        color: countdown > 0 ? 'var(--muted)' : '#fff', 
                         fontSize: '13px', fontWeight: 600, cursor: countdown > 0 ? 'default' : 'pointer' 
                       }}
                     >
-                      {countdown > 0 ? `Resend code in ${countdown}s` : 'Resend Code'}
+                      {countdown > 0 ? `Resend in ${countdown}s` : 'Resend Code'}
                     </button>
                   </div>
                 </div>
@@ -227,18 +244,21 @@ export default function Login() {
           )}
         </AnimatePresence>
 
-        {/* Divider */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '30px 0' }}>
-          <div style={{ flex: 1, height: '1px', background: 'var(--border2)' }} />
-          <span style={{ fontSize: '12px', color: 'var(--muted)', whiteSpace: 'nowrap' }}>or continue with</span>
-          <div style={{ flex: 1, height: '1px', background: 'var(--border2)' }} />
+        {/* Dynamic Divider */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '36px 0' }}>
+          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1))' }} />
+          <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Trusted Auth</span>
+          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255,255,255,0.1), transparent)' }} />
         </div>
 
         <GoogleAuthButton onClick={handleGoogle} loading={googleLoading} />
 
-        <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted2)', marginTop: '26px' }}>
-          By continuing, you agree to Validex's Terms of Service and Privacy Policy.
-        </p>
+        <div className="glass" style={{ marginTop: '32px', padding: '16px', borderRadius: '16px', textAlign: 'center' }}>
+          <p style={{ fontSize: '12px', color: 'var(--muted2)', margin: 0, lineHeight: 1.5 }}>
+            Validex uses enterprise-grade encryption. By continuing, you agree to our 
+            <Link to="/terms" style={{ color: '#fff', marginLeft: '4px', textDecoration: 'none' }}>Terms of Service</Link>.
+          </p>
+        </div>
       </div>
     </AuthLayout>
   )
