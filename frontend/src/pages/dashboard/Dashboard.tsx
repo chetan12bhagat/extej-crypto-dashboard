@@ -41,7 +41,7 @@ export default function Dashboard() {
   const hour = new Date().getHours()
   const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
 
-  const wallets = walletsQuery.data || []
+  const wallets = Array.isArray(walletsQuery.data) ? walletsQuery.data : []
   const summary = summaryQuery.data
   const transactions = txQuery.data?.items || []
 

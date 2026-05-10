@@ -39,7 +39,8 @@ export default function ValidationLogs() {
     flags?: string[];
   } | null>(null)
 
-  const logs = logsQuery.data || []
+  const logs = Array.isArray(logsQuery.data) ? logsQuery.data : []
+  const wallets = Array.isArray(walletsQuery.data) ? walletsQuery.data : []
 
   const handleValidate = async () => {
     let cleanAddress = address.trim()

@@ -16,7 +16,7 @@ export default function Wallet() {
   const [addOpen, setAddOpen] = useState(false)
   const [form, setForm] = useState({ label: '', address: '', coin: 'ETH' as CoinSymbol })
 
-  const wallets = walletsQuery.data || []
+  const wallets = Array.isArray(walletsQuery.data) ? walletsQuery.data : []
   const summary = summaryQuery.data
   const totalValue = summary?.totalValueUSD || 0
 
