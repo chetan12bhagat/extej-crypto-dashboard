@@ -30,7 +30,7 @@ export function useWallet() {
   })
 
   const addWalletMutation = useMutation({
-    mutationFn: (data: Omit<Wallet, 'walletId' | 'createdAt'>) =>
+    mutationFn: (data: Omit<Wallet, 'walletId' | 'createdAt' | 'balance' | 'balanceUSD'>) =>
       walletApi.add(data as Record<string, unknown>),
     onSuccess: (res) => {
       addWallet(res.data)

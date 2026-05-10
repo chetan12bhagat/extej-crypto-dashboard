@@ -43,6 +43,7 @@ const pageTitles: Record<string, string> = {
 
 function DashboardLayout() {
   const location = useLocation()
+  console.log('Rendering DashboardLayout at:', location.pathname)
   const title = pageTitles[location.pathname] ?? 'Dashboard'
 
   return (
