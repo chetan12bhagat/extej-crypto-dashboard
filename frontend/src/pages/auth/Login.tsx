@@ -47,12 +47,17 @@ export default function Login() {
       
       if (res.data.code) {
         // Backend returned code (Simulation/Demo mode)
-        add(`[DEMO] Your code: ${res.data.code}`, 'info')
+        add(`[DEMO] Auto-filling code: ${res.data.code}`, 'info')
+        const codeArray = res.data.code.toString().split('')
+        setOtp(codeArray)
+        setStep('otp')
+        // Automatically verify after a short delay
+        setTimeout(() => handleVerifyOTP(undefined, res.data.code.toString()), 1000)
       } else {
         add(`Verification code sent to ${email}`, 'success')
+        setStep('otp')
       }
       
-      setStep('otp')
       setCountdown(60)
     } catch (err: any) {
       console.error('OTP Send Error:', err)
@@ -65,9 +70,9 @@ export default function Login() {
     }
   }
 
-  const handleVerifyOTP = async (ev: React.FormEvent) => {
-    ev.preventDefault()
-    const code = otp.join('')
+  const handleVerifyOTP = async (ev?: React.FormEvent, autoCode?: string) => {
+    if (ev) ev.preventDefault()
+    const code = autoCode || otp.join('')
     if (code.length < 6) {
       add('Please enter the full 6-digit code', 'error')
       return
