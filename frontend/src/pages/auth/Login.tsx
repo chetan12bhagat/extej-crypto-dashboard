@@ -180,7 +180,7 @@ export default function Login() {
                 Check your Mail
               </h1>
               <p style={{ fontSize: '14px', color: 'var(--muted2)', marginBottom: '32px', lineHeight: 1.6 }}>
-                We've dispatched a 6-digit cryptographic code to <span style={{ color: '#fff', fontWeight: 600 }}>{email}</span>. 
+                We've dispatched a 6-digit cryptographic code to <span style={{ color: '#000', fontWeight: 600 }}>{email}</span>. 
               </p>
 
               <form onSubmit={handleVerifyOTP} style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
@@ -194,20 +194,20 @@ export default function Login() {
                       value={digit}
                       onChange={(e) => handleOtpChange(i, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(i, e)}
-                      whileFocus={{ scale: 1.05, borderColor: '#fff' }}
+                      whileFocus={{ scale: 1.05, borderColor: '#000' }}
                       style={{
                         width: '50px',
                         height: '62px',
                         textAlign: 'center',
                         fontSize: '24px',
                         fontWeight: 800,
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        border: '1px solid rgba(0,0,0,0.1)',
                         borderRadius: '16px',
-                        background: 'rgba(255,255,255,0.03)',
-                        color: '#fff',
+                        background: 'rgba(0,0,0,0.03)',
+                        color: '#000',
                         outline: 'none',
                         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                        boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
                       }}
                     />
                   ))}
@@ -239,7 +239,7 @@ export default function Login() {
                       onClick={handleSendOTP}
                       style={{ 
                         background: 'none', border: 'none', 
-                        color: countdown > 0 ? 'var(--muted)' : '#fff', 
+                        color: countdown > 0 ? 'var(--muted)' : '#000', 
                         fontSize: '13px', fontWeight: 600, cursor: countdown > 0 ? 'default' : 'pointer' 
                       }}
                     >
@@ -254,9 +254,9 @@ export default function Login() {
 
         {/* Dynamic Divider */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '36px 0' }}>
-          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1))' }} />
+          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(0,0,0,0.06))' }} />
           <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>Trusted Auth</span>
-          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(255,255,255,0.1), transparent)' }} />
+          <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, rgba(0,0,0,0.06), transparent)' }} />
         </div>
 
         <GoogleAuthButton onClick={handleGoogle} loading={googleLoading} />
@@ -264,7 +264,7 @@ export default function Login() {
         <div className="glass" style={{ marginTop: '32px', padding: '16px', borderRadius: '16px', textAlign: 'center' }}>
           <p style={{ fontSize: '12px', color: 'var(--muted2)', margin: 0, lineHeight: 1.5 }}>
             Validex uses enterprise-grade encryption. By continuing, you agree to our 
-            <Link to="/terms" style={{ color: '#fff', marginLeft: '4px', textDecoration: 'none' }}>Terms of Service</Link>.
+            <Link to="/terms" style={{ color: '#000', marginLeft: '4px', textDecoration: 'none', fontWeight: 600 }}>Terms of Service</Link>.
           </p>
         </div>
       </div>
