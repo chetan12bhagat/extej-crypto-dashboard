@@ -45,4 +45,5 @@ export interface ValidationResult {
   flags: string[]
   network: string
   type: string
+  message?: string
 }
