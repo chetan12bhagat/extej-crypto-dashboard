@@ -9,11 +9,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { validateEmail } from '@/utils/validators'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import axios from 'axios'
-
-// Standalone Vercel serverless function endpoints
-const SEND_OTP_URL = '/api/send_otp'
-const VERIFY_OTP_URL = '/api/verify_otp'
+import { authApi } from '@/services/api'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -47,21 +43,19 @@ export default function Login() {
     setLoading(true)
 
     try {
-      const res = await axios.post(SEND_OTP_URL, { email })
+      const res = await authApi.sendOTP(email)
       
       if (res.data.code) {
-        // SMTP not configured on server — show code in UI
+        // Backend returned code (Simulation/Demo mode)
         add(`[DEMO] Your code: ${res.data.code}`, 'info')
-        sessionStorage.setItem('demo_otp', res.data.code)
       } else {
         add(`Verification code sent to ${email}`, 'success')
-        sessionStorage.removeItem('demo_otp')
       }
       
       setStep('otp')
       setCountdown(60)
     } catch (err: any) {
-      const msg = err.response?.data?.detail || 'Failed to send OTP. Please try again later.'
+      const msg = err.response?.data?.detail || 'Failed to send OTP. Please check your connection.'
       add(msg, 'error')
     } finally {
       setLoading(false)
@@ -78,19 +72,7 @@ export default function Login() {
     
     setLoading(true)
     try {
-      const demoCode = sessionStorage.getItem('demo_otp')
-      if (demoCode) {
-        // Demo mode: verify locally
-        if (code !== demoCode) {
-          add('Invalid verification code', 'error')
-          setLoading(false)
-          return
-        }
-        sessionStorage.removeItem('demo_otp')
-      } else {
-        // Real mode: verify via serverless function
-        await axios.post(VERIFY_OTP_URL, { email, code })
-      }
+      await authApi.verifyOTP(email, code)
       
       await loginMockUser()
       add('Login successful!', 'success')

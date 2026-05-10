@@ -51,6 +51,8 @@ api.interceptors.response.use(
 
 // Auth
 export const authApi = {
+  sendOTP: (email: string) => api.post('/auth/send-otp', { email }),
+  verifyOTP: (email: string, code: string) => api.post('/auth/verify-otp', { email, code }),
   syncUser: (payload: Record<string, unknown>) => api.post('/auth/sync-user', payload),
   me: () => api.get('/auth/me'),
   logout: () => api.post('/auth/logout'),
